@@ -7,6 +7,22 @@ function cpuNumberGenerator(){
     return cpuNumber;
 }
 
+function gameResult(userNumber, cpuNumber, userChoice){
+    if( ( (userNumber + cpuNumber) % 2 ) === 0){ //controllo se il modulo della somma dei valori in gioco è 0
+        if(userChoice === "pari"){
+            alert("Hai vinto!"); //la somma dei numeri è pari e l'utente ha scommesso su pari.
+        }else{
+            alert("Hai perso!") //la somma dei numeri è pari ma l'utente ha scommesso su dispari.
+        }
+    }else{
+        if(userChoice === "dispari"){
+            alert("Hai vinto!"); //la somma dei numero è dispari e l'utente ha scelto dispari.
+        }else{
+            alert("Hai perso!"); //la domma dei numeri è disparmi ma l'utente ha scelto pari.
+        }
+    }   
+}
+
 
 /*** Main ***/
 
@@ -28,6 +44,7 @@ do{
                 const cpuNumber = cpuNumberGenerator();//richiamo la funzione che genera un numero casuale per la cpu avversaria
                 alert("La CPU ha scelto " + cpuNumber);
                 console.log("La CPU ha scelto: " + cpuNumber);
+                gameResult(userNumber,cpuNumber,userChoice);
             }else{
                 alert("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
                 console.log("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
