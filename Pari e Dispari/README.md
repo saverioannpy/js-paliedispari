@@ -15,3 +15,4 @@ Soluzione:
     3. Scrivo una funzione che generi un numero random tra 1 e 5 (estremi compresi) e che lo restituisca al mio main.  
     4. Sommo il numero scelto dall'utente e il numero generato dalla mia funzione
     5. Scrivo una funziona che mi permetta di stabilire se il numero passatogli come parametro sia pari o dispari calcolandone il modulo e verificando se esso sia 0. 
+    6. Decreto il vincitore in base alla scelta fatta dall'utente al punto 1.
