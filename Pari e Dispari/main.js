@@ -2,33 +2,44 @@
 
 /*** Funzioni ***/
 
-function cpuNumberGenerator(){
+function cpuNumberGenerator(){ //funzione per la generazione di un numero casuale giocato dalla cpu
     const cpuNumber = Math.floor(Math.random() * 4) + 1; //genero casualmente un numero tra 1 e 5
     return cpuNumber; //restituisco al main il numero generato
 }
 
-function gameResult(sumNumbers, userChoice){
+function gameResult(sumNumbers, userChoice){ //funzione che decreta il vincitore della partita
     if( ( sumNumbers % 2 ) === 0 ){ //controllo se il modulo della somma dei valori in gioco è 0
         if(userChoice === "pari"){
-            alert("Hai vinto!"); //la somma dei numeri è pari e l'utente ha scommesso su pari.
+            alert("Avevi scelto pari, hai vinto!"); //la somma dei numeri è pari e l'utente ha scommesso su pari.
+            console.log("Il giocatore vince");
+            return true;
         }else{
-            alert("Hai perso!") //la somma dei numeri è pari ma l'utente ha scommesso su dispari.
+            alert("Avevi scelto dispari, Hai perso!") //la somma dei numeri è pari ma l'utente ha scommesso su dispari.
+            console.log("la CPU vince");
+            return false;
         }
     }else{
         if(userChoice === "dispari"){
-            alert("Hai vinto!"); //la somma dei numero è dispari e l'utente ha scelto dispari.
+            alert("Avevi scelto dispari, hai vinto!"); //la somma dei numero è dispari e l'utente ha scelto dispari.
+            console.log("Il giocatore vince");
+            return true;
         }else{
-            alert("Hai perso!"); //la domma dei numeri è disparmi ma l'utente ha scelto pari.
+            alert("Avevi scelto pari, hai perso!"); //la domma dei numeri è disparmi ma l'utente ha scelto pari.
+            console.log("La CPU vince");
+            return false;
         }
-    }   
+    }  
+    
 }
-
 
 /*** Main ***/
 
 let userChoice = 'pari'; //la variabile che conterrà la scelta viene inizializzata a "pari".
-let userNumber = 0;
+let userNumber = 0; //il numero scelto dall'utente viene inizializzato a 0
 let userGame = "si";
+let userPoints = 0; //contatore delle partite vinte dal giocatore 
+let cpuPoints = 0; //contatore delle partite vinte dalla cpu
+
 
 do{
     do{
@@ -49,8 +60,12 @@ do{
                     console.log("La CPU ha scelto: " + cpuNumber);
                     const sumNumbers = userNumber + cpuNumber; //sommo i due numeri scelti dai giocatori
                     alert("La somma dei numeri scelti dai giocatori è: " + sumNumbers);
-                    console.log("La somma dei numeri scelti dai giocatori è:" + sumNumbers);
-                    gameResult(sumNumbers,userChoice);
+                    console.log("La somma dei numeri scelti dai giocatori è :" + sumNumbers);
+                    if (gameResult(sumNumbers,userChoice)){
+                        userPoints++;
+                    }else{
+                        cpuPoints++;
+                    }
                 }else{
                     alert("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
                     console.log("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
@@ -65,9 +80,10 @@ do{
         userGame = prompt("Vuoi ancora giocare? (si / no)"); //domanda che permette all'utente di giocare un'altra partia se ne ha voglia
         userGame = userGame.toLowerCase();
         if(userGame === "no" ){
-            alert("Grazie per aver giocato");
+            alert("Grazie per aver giocato\nTuo punteggio: " + userPoints + "\nPunteggio CPU: " + cpuPoints);
+            
             console.log("Il gioco termina. Grazie per aver giocato.")
-        }else if(userGame !== "si" && userGame !=="no"){
+        }else if(userGame !== "si" && userGame !=="no"){ //se l'utente inserisce un input errato gli verrà richiesta l'immissione.
             alert("Non ho capito bene la tua scelta, vuoi continuare a giocare? (si / no)")
             console.log("ERRORE: Non ho capito bene la tua scelta, vuoi continuare a giocare? (si / no)");
         }
