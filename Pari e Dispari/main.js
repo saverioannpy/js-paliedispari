@@ -61,10 +61,10 @@ do{
                     const sumNumbers = userNumber + cpuNumber; //sommo i due numeri scelti dai giocatori
                     alert("La somma dei numeri scelti dai giocatori è: " + sumNumbers);
                     console.log("La somma dei numeri scelti dai giocatori è :" + sumNumbers);
-                    if (gameResult(sumNumbers,userChoice)){
-                        userPoints++;
+                    if (gameResult(sumNumbers,userChoice)){ //richiamo la funzione per verificare chi è il vincitore della partita
+                        userPoints++; //se la funzione restituisce true incrementiamo il punteggio del giocatore
                     }else{
-                        cpuPoints++;
+                        cpuPoints++; //se la funzione restituisce false incrementiamo il punteggio della CPU
                     }
                 }else{
                     alert("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
@@ -77,11 +77,10 @@ do{
         }
     }while( (userChoice !== "pari") && (userChoice !== "dispari") ) //se l'utente inserisce un valora errato risalità a monte e ripeterà l'input
     do{
-        userGame = prompt("Vuoi ancora giocare? (si / no)"); //domanda che permette all'utente di giocare un'altra partia se ne ha voglia
+        userGame = prompt("Vuoi ancora giocare? (si / no)"); //domanda che permette all'utente di giocare un'altra partia se ne ha voglia digitando "si"
         userGame = userGame.toLowerCase();
-        if(userGame === "no" ){
+        if(userGame === "no" ){ //se l'utente digita "no" il programma si arresta e gli vengono mostrati i punteggi finali
             alert("Grazie per aver giocato\nTuo punteggio: " + userPoints + "\nPunteggio CPU: " + cpuPoints);
-            
             console.log("Il gioco termina. Grazie per aver giocato.")
         }else if(userGame !== "si" && userGame !=="no"){ //se l'utente inserisce un input errato gli verrà richiesta l'immissione.
             alert("Non ho capito bene la tua scelta, vuoi continuare a giocare? (si / no)")
