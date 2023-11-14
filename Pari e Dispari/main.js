@@ -24,7 +24,7 @@ function gameResult(sumNumbers, userChoice){ //funzione che decreta il vincitore
             console.log("Il giocatore vince");
             return true;
         }else{
-            alert("Avevi scelto pari, hai perso!"); //la domma dei numeri è disparmi ma l'utente ha scelto pari.
+            alert("Avevi scelto pari, hai perso!"); //la somma dei numeri è disparmi ma l'utente ha scelto pari.
             console.log("La CPU vince");
             return false;
         }
@@ -36,12 +36,13 @@ function gameResult(sumNumbers, userChoice){ //funzione che decreta il vincitore
 
 let userChoice = 'pari'; //la variabile che conterrà la scelta viene inizializzata a "pari".
 let userNumber = 0; //il numero scelto dall'utente viene inizializzato a 0
-let userGame = "si";
+let userGame = "si"; //questa variabile permette all'utente di rigiocare la partita fin quando il suo valore è "si"
 let userPoints = 0; //contatore delle partite vinte dal giocatore 
 let cpuPoints = 0; //contatore delle partite vinte dalla cpu
 
 
 do{
+    //Istruzioni per l'esecuzione della partita:
     do{
         userChoice = prompt("Cosa scegli, pari o dispari?"); //L'utente effettua una scelta tra pari e dispari
         userChoice = userChoice.toLowerCase(); //per evitare errori di verifica sull'input decido di convertirmi l'input in minuscolo
@@ -55,7 +56,7 @@ do{
                 if( ( userNumber >= 1 ) && ( userNumber <= 5 ) ){ //se il numero scelto è compreso fra 1 e 5 allora il gioco continua
                     alert("Hai scelto: " + userNumber);
                     console.log("Scelta eseguita correttamente: " + userNumber);
-                    const cpuNumber = cpuNumberGenerator();//richiamo la funzione che genera un numero casuale per la cpu avversaria
+                    const cpuNumber = cpuNumberGenerator(); //richiamo la funzione che genera un numero casuale per la cpu avversaria
                     alert("La CPU ha scelto: " + cpuNumber);
                     console.log("La CPU ha scelto: " + cpuNumber);
                     const sumNumbers = userNumber + cpuNumber; //sommo i due numeri scelti dai giocatori
@@ -66,16 +67,19 @@ do{
                     }else{
                         cpuPoints++; //se la funzione restituisce false incrementiamo il punteggio della CPU
                     }
-                }else{
+                }else{ //se l'utente non ha inserito un numero compreso tra 1 e 5 gli verrà visualizzato un messaggio di errore.
                     alert("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
                     console.log("Errore: Hai inserito un valore sbalgiato, scegli un numero compreso tra 1 e 5. Riprova.")
                 }
-            }while( ( userNumber < 1 ) || ( userNumber > 5 ) || ( isNaN(userNumber) )) //il programma chiederà all'utente di scegliere un numero fin quando esso non sarà tra 1 e 5
-        }else{
+            }while( ( userNumber < 1 ) || ( userNumber > 5 ) || ( isNaN(userNumber) )) //il programma chiederà all'utente di scegliere un numero fin quando esso non sarà compreso tra 1 e 5
+        }else{ //se l'utente inserire una scelta diversa da "pari" o da "dispari" gli verrà mostrato un messaggio di errore
             alert("Errore: Forse non ho capito bene la tua scelta, scegli tra pari o dispari. Riprova.")
             console.log("Errore: Forse non ho capito bene la tua scelta, scegli tra pari o dispari. Riprova.")
         }
-    }while( (userChoice !== "pari") && (userChoice !== "dispari") ) //se l'utente inserisce un valora errato risalità a monte e ripeterà l'input
+    }while( (userChoice !== "pari") && (userChoice !== "dispari") ) //se l'utente inserire una scelta diversa da "pari" o da "dispari" risalità a monte e ripeterà l'input
+    // /Istruzioni per l'esecuzione della partita.
+
+    //Istruzioni per rigiocare un'altra partita:
     do{
         userGame = prompt("Vuoi ancora giocare? (si / no)"); //domanda che permette all'utente di giocare un'altra partia se ne ha voglia digitando "si"
         userGame = userGame.toLowerCase();
@@ -87,4 +91,5 @@ do{
             console.log("ERRORE: Non ho capito bene la tua scelta, vuoi continuare a giocare? (si / no)");
         }
     }while(userGame !== "si" && userGame !=="no")
+    // /Istruzioni per rigiocare un'altra partita
 }while(userGame === "si")
