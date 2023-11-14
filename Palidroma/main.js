@@ -10,14 +10,14 @@ function palindroma(parolaA){
             console.log(parolaB[j]);
             i--; //inserisco l'ultimo carattere della parola data dall'utente alla posizione 0 del mio array e vado avanti così incrementando i e decrementando j
         }
-    let b = parolaB.toString();
-    console.log(b);
     console.log("La parola inserita dall'utente è: " + parolaA);
-    console.log("La parola se viene invertita diventa: " + b); 
+    console.log("La parola se viene invertita diventa: " + parolaB); 
     if(parolaA === parolaB){
         alert("La parola inserita è palindroma");
+        console.log("La parola inserita è palindroma");
     }else{
         alert("La parola inserita non è palindroma");
+        console.log("La parola inserita NON è palindroma");
     }
 }
 
